@@ -1,0 +1,11 @@
+<h1> Hello, Please Sign Up </h1>
+<% if (errors){  %>
+	<p class="error" for="mongoDB"> <%= errors%> </p>
+<%}%>
+
+
+<form action = "/logIn" method = "POST">
+    <input type = "text" placeholder = "Username ... " name = "username">
+    <input type = "password" placeholder = "Password ... " name = "password">
+    <input type = "submit" value = "Sign Up"><br>
+</form>
