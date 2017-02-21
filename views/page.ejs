@@ -1,8 +1,7 @@
 
+<h1> Hello new <%= username %> </h1> <!-- put the name of user and a button not an input because it was not working -->
 
-<h1> Hello new <%= username %> </h1> <!-- put the name of user -->
-
-<form>
-<input type = "submit" action = "/logIn" method = "GET" value = "Log Out">
+<form action = "/users/logOut" method = "POST"> 
+<button>Log Out</button>
 </form>
 

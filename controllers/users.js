@@ -42,5 +42,23 @@ router.get("/", (req, res) => { // the args are taken from the precedent handler
 }) 
 
 
+// Create a route Post get the cookie id find the session id and delete that one then redirect to logIn
+
+router.post("/logOut", (req, res) => { // the args are taken from the precedent handler funtion ( it a cascading objection modification)
+	console.log("logging out")
+	if (req.cookies.sessionID){
+		sessionID = {_id: req.cookies.sessionID}
+		sessionM.findOneAndRemove(sessionID, (error, SessionRecord) => {
+			console.log("sessionID deleted")
+ 			res.redirect("/logIn")
+    	})
+    }		
+
+	res.redirect("/logIn")
+	
+})
+
+
+
 
 module.exports = router

@@ -12,7 +12,6 @@ var emotionSchema = new Schema({
                 default: (new Date()).getTime() 
                 }
 
-
 })
 
 
