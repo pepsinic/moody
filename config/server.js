@@ -25,6 +25,10 @@ app.use("/", sessionsController)
 var usersController = require("../controllers/users") 
 app.use("/users", usersController) // this is routing to the controllers users so we must render /users from the session controller to send it there
 
+
+var emotionsController = require("../controllers/emotions") 
+app.use("/emotions", emotionsController)
+
 app.listen(3001, function() {
     console.log("litening in port 3001")
 })

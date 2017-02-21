@@ -1,12 +1,19 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-var numberSchema = new Schema({
-    userID:    {type: number, required: true}
+var emotionSchema = new Schema({
+	number:  {
+                type: Number,
+                required: 'Emotion is required',               
+                },
+
+	time:      {
+                type: Date,
+                default: (new Date()).getTime() 
+                }
+
+
 })
 
-var timeSchema = new Schema({
-	userID: {type: Date, default:(new Date().getTime()
-	})
 
-mongoose.model("sessionCollection", sessionSchema)
+mongoose.model("emotionCollection", emotionSchema)
