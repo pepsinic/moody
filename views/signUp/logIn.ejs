@@ -1,4 +1,7 @@
 <h1> Hello, Please Sign Up </h1>
+<% if (errors){  %>
+	<p class="error" for="email"> <%= errors%> </p>
+<%}%>
 
 <form action = "/users/signIn" method = "GET">
 	<input type = "submit" value = "Sign In">

@@ -18,20 +18,20 @@ router.get("/", (req, res) => {
     // req.cookies.sessionID
     // get the session from the DB
         //get the owner (user) of the session
-    res.render("signUp/index")
+    res.render("logIn")
 })
 
-router.get("/signUp/error", (req, res) => {
-    res.render("signUp/error") // Here we don't put / before 
+router.get("/logIn", (req, res) => {
+    res.render("logIn") // Here we don't put / before 
     //because otherwise it is an absolute path which means it start from the route of my file system
 }) 
 
-router.get("/signUp", (req, res) => {
-    res.render("sessions/signUp")
+router.get("/logIn", (req, res) => {
+    res.render("logIn")
 })
 
 
-router.post("/signUp", (req, res) => { ///signUp here is just what the user sees
+router.post("/logIn", (req, res) => { ///signUp here is just what the user sees
 
     const userData = {email: req.body.email, password: req.body.password} // get the info from the body
     // save record to the db
@@ -42,7 +42,7 @@ router.post("/signUp", (req, res) => { ///signUp here is just what the user sees
 
         if(error) { //if error ... Show errors in signUp
             console.log("------------", error.message)
-            res.render("signUp/error", {errors: error}) 
+            res.render("logIn", {errors: error}) 
             //REDIRECT  = >/signUp/error is the path as URL we must indicate BUT WE CAN ADD INFORMATION
             //RENDER= >WITHOUT SLASH signUp/error reads the fill inside your folder
             return
@@ -54,13 +54,13 @@ router.post("/signUp", (req, res) => { ///signUp here is just what the user sees
         
                 if(errors) { //maybe not necessary
                     console.log(errors)
-                    res.render("signUp/error", {errors: error})
+                    res.render("logIn", {errors: error})
                     }
 
                 else {  
                     console.log(SessionRecord)
                     res.cookie('sessionID', SessionRecord._id, { maxAge: 900000, httpOnly: false });
-                    res.redirect("/users/page/" + SessionRecord._id) //OK now give back user!
+                    res.redirect("/logIn" + SessionRecord._id) //OK now give back user! smiley
                 }
             })   
         }   

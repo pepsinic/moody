@@ -6,7 +6,7 @@ var numberSchema = new Schema({
 })
 
 var timeSchema = new Schema({
-	userID: {type: Date, default:(new Date()).getTime()
+	userID: {type: Date, default:(new Date().getTime()
 	})
 
 mongoose.model("sessionCollection", sessionSchema)
