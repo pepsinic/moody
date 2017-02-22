@@ -42,6 +42,7 @@ router.get("/", (req, res) => { // the args are taken from the precedent handler
 }) 
 
 
+
 // Create a route Post get the cookie id find the session id and delete that one then redirect to logIn
 
 router.post("/logOut", (req, res) => { // the args are taken from the precedent handler funtion ( it a cascading objection modification)
@@ -52,9 +53,9 @@ router.post("/logOut", (req, res) => { // the args are taken from the precedent 
 			console.log("sessionID deleted")
  			res.redirect("/logIn")
     	})
+    	return // need to return otherwise it will execute the second res.redirect and brake the code!!!!!
     }		
-
-	res.redirect("/logIn")
+    res.redirect("/logIn")
 	
 })
 
