@@ -1,7 +1,14 @@
 
 <h1> Hello new <%= username %> </h1> <!-- put the name of user and a button not an input because it was not working -->
 
-<form action = "/users/logOut" method = "POST"> 
-<button>Log Out</button>
-</form>
+<% for (var i = 1; i<=3; i++ ) {%>
+	<form action = "/emotions/create" method = "POST">
+		<button href="/emotions/<%= i %>" name = "emotionParam" value ="<%= i %>">
+			<img src="/public/img/<%= i %>.jpg" alt="" border=3 height=100 width=100/>
+		</button>
+	</form>
+<% } %>
 
+<form action = "/login" method = "POST"> 
+	<button>Log Out</button>
+</form>
