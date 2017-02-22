@@ -66,7 +66,22 @@ router.post("/logIn", (req, res) => { ///signUp here is just what the user sees
     })
 })
 
-
+router.get("*", (req, res, next) => { // next as 3rd arg + next() make a connection between the 2 router with "/"
+    // console.log(res.locals) is object has properties that are local variables within the application.
+    //res.locals.banana = 1
+    if (req.cookies.sessionID){
+        sessionID = {_id: req.cookies.sessionID}
+        sessionM.findOne(sessionID, (error, SessionRecord) => {
+            console.log("--------" + SessionRecord.userID)
+            res.locals.user = SessionRecord.userID //we pass on a variable to the next handler
+            //res.render("page") // id, user NO NEED because next() jumps directly to the next handler
+            next()
+        })
+    }       
+    else {
+        res.redirect("/logIn")
+    }
+})
 
 
 module.exports = router //creates the privilegies that the users will have !
