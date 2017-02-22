@@ -13,6 +13,7 @@ GET  /clean  Remove all user's records from your collection
 GET  /       Display User Info (only works after signUp)
 */
 
+
 router.get("/", (req, res) => {
     console.log("going to logIn")
     // req.cookies.sessionID
@@ -20,6 +21,7 @@ router.get("/", (req, res) => {
         //get the owner (user) of the session
     res.redirect("/logIn")
 })
+
 
 router.get("/logIn", (req, res) => {
     console.log("is in logIn")
@@ -43,7 +45,7 @@ router.post("/logIn", (req, res) => { ///signUp here is just what the user sees
 
         if(error) { //if error ... Show errors in signUp
             console.log("------------", error.message)
-            res.render("logIn", {errors: "Email, password combination wrong"})
+            res.render("logIn", {errors: "Email or Password combination wrong & Password must be at least 6 characters long"})
         }
 
         //create session
