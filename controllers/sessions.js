@@ -13,6 +13,11 @@ GET  /clean  Remove all user's records from your collection
 GET  /       Display User Info (only works after signUp)
 */
 
+router.get("/", (req, res) => { //CODE TO MOVE TO EMOTION CONTROLLER ?
+    console.log("going to month page")
+    res.render("month")
+}) 
+
 
 router.get("/", (req, res) => {
     console.log("going to logIn")
