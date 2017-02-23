@@ -19,3 +19,8 @@ var emotionSchema = new Schema({
 
 
 mongoose.model("emotionCollection", emotionSchema)
+
+// mongoose.connection.collections["emotioncollections"].drop( function(err) { 
+// // the name of the collection MUST be without CAPITAL letter and plural!!!!!! otherwise undefined
+//     console.log('collection dropped');
+// })

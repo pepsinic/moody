@@ -30,5 +30,5 @@ var emotionsController = require("../controllers/emotions")
 app.use("/emotions", emotionsController)
 
 app.listen(3001, function() {
-    console.log("litening in port 3001")
+    console.log("listening in port 3001")
 })

@@ -27,7 +27,7 @@ const emotionM = mongoose.model("emotionCollection")
 // })
 
 router.get('/', function(req, res) {
-	mongoose.model("emotionCollection").find({}, function(err, records) {
+	mongoose.model("emotionCollection").find({}, function(err, records) { //CHECK IF SESSION connect to it!
 		res.render('emotions/index', {emotions: records})
 	})	
 })
