@@ -1,7 +1,17 @@
+
+
 <ul>
 	<% for (emotion of emotions) { %>
 		<li>
 			<%= emotion %>
 		</li>
 	<% } %>
+</ul>
+
+	Username : <%= username %> <br>
+	Emotions : <br>
+		<% for (emotion of emotions){ %> 
+			<ul><%= emotion  %> 
+				<li><%= emotion.time  %> </li>
+					<% } %>
 </ul>

@@ -16,11 +16,10 @@ const sessionM = mongoose.model("sessionCollection")
 
 
 router.get("/", (req, res) => { // the args are taken from the precedent handler funtion ( it a cascading objection modification)
-	console.log(res.locals)
 	userID = {_id: res.locals.user}
 	// find the username with the userID
 	userM.findOne(userID, (error, userRecords) => {
-		console.log(userRecords)
+		console.log("I am in USERS : " + userRecords)
 		res.render("page", {username : userRecords.username})
 	})
 

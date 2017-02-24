@@ -13,11 +13,6 @@ GET  /clean  Remove all user's records from your collection
 GET  /       Display User Info (only works after signUp)
 */
 
-// router.get("/", (req, res) => { //CODE TO MOVE TO EMOTION CONTROLLER ?
-//     console.log("going to month page")
-//     res.render("month")
-// }) 
-
 
 
 router.get("/", (req, res) => {
@@ -50,7 +45,7 @@ router.post("/logIn", (req, res) => { ///signUp here is just what the user sees
     userM.findOrCreate(userData,(error, PersonRecord) =>{
 
         if(error) { //if error ... Show errors in signUp
-            console.log("------------", error.message)
+            console.log("--*-----*----*-", error.message)
             res.render("logIn", {errors: "Email or Password combination wrong & Password must be at least 6 characters long"})
         }
 
@@ -64,7 +59,7 @@ router.post("/logIn", (req, res) => { ///signUp here is just what the user sees
                 return
             }
  
-            console.log(SessionRecord)
+            console.log("====*****===" + SessionRecord)
             res.cookie('sessionID', SessionRecord._id, { maxAge: 900000, httpOnly: false });
             res.redirect("/users") //  /users to send to the controller users!!!! now give back user- to index(for us) and then smiley
         })   
@@ -72,19 +67,35 @@ router.post("/logIn", (req, res) => { ///signUp here is just what the user sees
     })
 })
 
-router.get("*", (req, res, next) => { // next as 3rd arg + next() make a connection between the 2 router with "/"
+router.use("*", (req, res, next) => { // USE and not GET method because then it works for POST method too
+    // next as 3rd arg + next() make a connection between the 2 router with "/"
     // console.log(res.locals) is object has properties that are local variables within the application.
     //res.locals.banana = 1
     if (req.cookies.sessionID){
         sessionID = {_id: req.cookies.sessionID}
-        sessionM.findOne(sessionID, (error, SessionRecord) => {
-            console.log("--------" + SessionRecord.userID)
-            res.locals.user = SessionRecord.userID //we pass on a variable to the next handler
-            //res.render("page") // id, user NO NEED because next() jumps directly to the next handler
-            next()
+        console.log(sessionID)
+        sessionM.findOne(sessionID, (error, SessionRecord) => { 
+            console.log("++++++++   " + SessionRecord)
+            console.log("$$$$$$$$   " + SessionRecord.userID)
+
+            userM.findOne({_id: SessionRecord.userID}, (error, userRecords) => { //problem!!!!returning null?
+                
+                if(error) { //not necessary but nice to have
+                console.log(error)
+                res.render("page", {errors: error})
+                return
+                
+                }
+
+                console.log("%%%%%%%   " + userRecords)
+                res.locals.user = userRecords //we pass on a variable to the next handler
+                //res.render("page") // id, user NO NEED because next() jumps directly to the next handler
+                next()
+            })
         })
     }       
     else {
+        console.log('bammmm')
         res.redirect("/logIn")
     }
 })

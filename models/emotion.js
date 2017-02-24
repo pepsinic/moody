@@ -11,7 +11,7 @@ var emotionSchema = new Schema({
                 type: Date,
                 default: (new Date()).getTime() 
                 },
-    userId: {
+    userID: {
     			type: String
     		}
 
