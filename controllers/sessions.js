@@ -73,15 +73,15 @@ router.use("*", (req, res, next) => { // USE and not GET method because then it 
     //res.locals.banana = 1
     if (req.cookies.sessionID){
         sessionID = {_id: req.cookies.sessionID}
-        console.log(sessionID)
+        console.log("IN THE ROUTE.USE: " + sessionID)
+        
         sessionM.findOne(sessionID, (error, SessionRecord) => { 
-            console.log("++++++++   " + SessionRecord)
-            console.log("$$$$$$$$   " + SessionRecord.userID)
-
+        console.log("userID : " + SessionRecord.userID)
+            
             userM.findOne({_id: SessionRecord.userID}, (error, userRecords) => { //problem!!!!returning null?
                 
                 if(error) { //not necessary but nice to have
-                console.log(error)
+                console.log("error: " + error)
                 res.render("page", {errors: error})
                 return
                 

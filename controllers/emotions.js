@@ -10,12 +10,19 @@ const emotionM = mongoose.model("emotionCollection")
 
 
 router.get('/', function(req, res) {
-	userID = {_id: res.locals.user} 
-		console.log(userRecords)
-		console.log(userID)
-		mongoose.model("emotionCollection").find({}, function(err, records) { //CHECK IF SESSION connect to it!
-			res.render('emotions/index', {emotions: records, userID: res.locals.user, username : userRecords.username})
-		})
+	userID = {_id: res.locals.user._id}
+	username = {username: res.locals.user.username} 
+	console.log("WE ARE IN INDEX") 
+	console.log(userID, username)
+	
+	mongoose.model("emotionCollection").find({}, function(err, records) { 
+		// we need the times/emotions/userIDs and the usernames/userIDs and compare them with all the userID of emotions DB
+		console.log(records)
+		// for (var feeling of records){
+		// console.log("£££££  " + feeling.userID, userID)
+		res.render('emotions/index', {emotions: records, userID: res.locals.user._id, username : username.username})		
+		// }
+	})
 })
 
 router.post('/create', function(req, res) {  //first it create the emotion !!! 
@@ -33,16 +40,17 @@ router.post('/create', function(req, res) {  //first it create the emotion !!!
 		console.log("Your choice is emotion 3: Unhappy.")
 	}
 	
-	mongoose.model("emotionCollection").create({number: emotionVAR, userID: res.locals.user}, function(err, records) {
+	mongoose.model("emotionCollection").create({number: emotionVAR, userID: res.locals.user._id}, function(err, records) {
 		res.redirect("/emotions")
 	})	
 	
 })
 
-router.get("/", (req, res) => { 
+router.get("/month", (req, res) => { 
     console.log("going to month page")
     res.render("month")
 }) 
 
 
 module.exports = router
+

@@ -1,17 +1,19 @@
+<!-- for each user in the user data base show name -->
+<!-- for (var feeling of emotions){
+	 //   feeling.userID  and userID  -->
+Username : <%= username %> <br>
+Emotions : <br>
+<%for (var feeling of emotions){%> 
+	<% if (userID == feeling.userID){ %>
+			<ul><img src="/public/img/<%= feeling.number %>.jpg" alt="" border=3 height=50 width=50/>
+			<time><%= feeling.time  %></time></ul>
+		<% } %>	
+<% } %>
 
+<form action = "/users" method = "GET"> 
+	<button>Mood changed?</button>
+</form>
 
-<ul>
-	<% for (emotion of emotions) { %>
-		<li>
-			<%= emotion %>
-		</li>
-	<% } %>
-</ul>
-
-	Username : <%= username %> <br>
-	Emotions : <br>
-		<% for (emotion of emotions){ %> 
-			<ul><%= emotion  %> 
-				<li><%= emotion.time  %> </li>
-					<% } %>
-</ul>
+<form action = "/emotions/month" method = "GET"> 
+	<button>See the calendar</button>
+</form>
