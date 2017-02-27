@@ -48,7 +48,25 @@ router.post('/create', function(req, res) {  //first it create the emotion !!!
 
 router.get("/month", (req, res) => { 
     console.log("going to month page")
-    res.render("month")
+    userID = {_id: res.locals.user._id}
+	username = {username: res.locals.user.username} 
+	console.log("WE ARE IN MONTH") 
+	console.log(userID, username)
+    mongoose.model("emotionCollection").find({}, function(err, records) { 
+    res.render("month", {emotions: records, userID: res.locals.user._id, username : username.username})
+	})
+}) 
+
+router.get("/comment", (req, res) => { 
+    console.log("going to comment")
+    userID = {_id: res.locals.user._id}
+	username = {username: res.locals.user.username} 
+	console.log("WE ARE IN MONTH") 
+	console.log(userID, username)
+ //    mongoose.model("emotionCollection").find({}, function(err, records) { 
+ //    res.render("month", {emotions: records, userID: res.locals.user._id, username : username.username})
+	// })
+	res.render("comment")
 }) 
 
 

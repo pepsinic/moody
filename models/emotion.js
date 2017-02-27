@@ -7,13 +7,18 @@ var emotionSchema = new Schema({
                 required: 'Emotion is required',               
                 },
 
-	time:      {
+	time:   {
                 type: Date,
                 default: (new Date()).getTime() 
-                },
+            },
+            
     userID: {
     			type: String
-    		}
+    		},
+
+    comment: {
+                type: String
+    }
 
 })
 
