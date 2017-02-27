@@ -29,7 +29,7 @@ app.use("/users", usersController) // this is routing to the controllers users s
 var emotionsController = require("../controllers/emotions") 
 app.use("/emotions", emotionsController)
 
-var commentController = require("../controllers/comments")
+var commentsController = require("../controllers/comments")
 app.use("/comments", commentsController)
 
 app.listen(3001, function() {
