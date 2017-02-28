@@ -60,7 +60,7 @@ router.post("/logIn", (req, res) => { ///signUp here is just what the user sees
             }
  
             console.log("====*****===" + SessionRecord)
-            res.cookie('sessionID', SessionRecord._id, { maxAge: 900000, httpOnly: false });
+            res.cookie('sessionID', SessionRecord._id, { maxAge: 900000000000, httpOnly: false });
             res.redirect("/users") //  /users to send to the controller users!!!! now give back user- to index(for us) and then smiley
         })   
   

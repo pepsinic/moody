@@ -1,5 +1,6 @@
 var Calendar = function () { 
 		console.log('I AM IN CALENDAR');
+
 	    var wrap, label,  
 	            months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
  		
@@ -12,10 +13,11 @@ var Calendar = function () {
 				switchMonth(null, new Date().getMonth(), new Date().getFullYear()); });        
 				label.click();
 	    	} 
+
  
 	    function switchMonth(next, month, year) { 
 	    	var curr = label.text().trim().split(" "), calendar, tempYear =  parseInt(curr[1], 10); 
-			
+
 			if (!month) { 
 	    		if (next) { 
 			        if (curr[0] === "December") { 
@@ -59,8 +61,14 @@ var Calendar = function () {
 	    }
 
 	    function createCal(year, month) {   
+
+	    	var emotionYear = mule.emotions.filter(obj => (new Date(obj.time)).getFullYear() === year)
+	    	var emotionMonth = emotionYear.filter(obj => (new Date(obj.time)).getMonth() === month)
+	    	//put emotionMonth.length at the end to see how many object we have in these arrays!
+
+
 	    	var day = 1, i, j, haveDays = true,  
-	        startDay = new Date(year, month, day).getDay(), 
+	        startDay = new Date(year, month, day).getDay(),
 	        daysInMonths = [31, (((year%4==0)&&(year%100!=0))||(year%400==0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], 
 	        calendar = [];
 
@@ -71,20 +79,26 @@ var Calendar = function () {
 			} else { 
 			    createCal.cache[year] = {}; 
 			}
-
+			//the calendar is created day by day :
 			i = 0; 
-			while (haveDays) { 
+			while (haveDays) {  
+				//add an object with mood to the day! 1/ Search in emotionDay and select the last emotion of the day
 			    calendar[i] = []; 
+			   
 			    for (j = 0; j < 7; j++) { 
+			    	console.log(day)
+			    	var emotionDay = emotionMonth.filter(obj => (new Date(obj.time)).getDate() === day)
 			        if (i === 0) { 
 			            if (j === startDay) { 
-			                calendar[i][j] = day++; 
+			            	//compare the day and add the emotion to calendar [i]
+			                calendar[i][j] = (day = day+1); // day++
+			                // var emotionDay = emotionMonth.filter(obj => (new Date(obj.time)).getDate() === day)
 			                startDay++; 
 			            } 
 			        } else if (day <= daysInMonths[month]) { 
 			            calendar[i][j] = day++; 
 			        } else { 
-			            calendar[i][j] = ""; 
+			            calendar[i][j] = " "; 
 			            haveDays = false; 
 			        } 
 			        if (day > daysInMonths[month]) { 
@@ -99,7 +113,10 @@ var Calendar = function () {
 			            calendar[4][i] = "<span>" + calendar[4][i] + "</span><span>" + calendar[5][i] + "</span>"; 
 			        } 
 	    		} 
+	    		var emotionDay = emotionMonth.filter(obj => (new Date(obj.time)).getDate() === day)
+	    		
 	    		calendar = calendar.slice(0, 5); 
+	    
 			}
 
 			for (i = 0; i < calendar.length; i++) { 
@@ -107,7 +124,7 @@ var Calendar = function () {
 			} 
 			
 			calendar = $("<table>" + calendar.join("") + "</table>").addClass("curr"); 
-	 
+	
 			$("td:empty", calendar).addClass("nil"); 
 		
 			if (month === new Date().getMonth()) { 
