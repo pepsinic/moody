@@ -52,8 +52,9 @@ router.get("/month", (req, res) => {
 	username = {username: res.locals.user.username} 
 	console.log("WE ARE IN MONTH") 
 	console.log(userID, username)
-    mongoose.model("emotionCollection").find({}, function(err, records) { 
-    res.render("month", {emotions: records, userID: res.locals.user._id, username : username.username})
+    mongoose.model("emotionCollection").find({userID: res.locals.user._id}, function(err, records) {
+    	console.log(records)
+    	res.render("month", {emotions: records, userID: res.locals.user._id, username : username.username})
 	})
 }) 
 

@@ -6,7 +6,12 @@
     <title>Calendar </title>
   </head>
   <body>
+      <script type="text/javascript">
+        var mule = {emotions: <%- JSON.stringify(emotions) -%>}  
+        //mule is a variable so that it can be passed to the file calendar.js
+        //console.log(mule.emotions[x].time, mule.emotions[x].number )
 
+      </script>
       <div id="cal"> 
         <div class="header"> 
           <span class="left button" id="prev"> &#10094; </span> 
@@ -30,7 +35,7 @@
 
         <div id="cal-frame"> 
           <table class="temp">   
-                <tr> <td class="nil">new</td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td>1</td> </tr> 
+                <tr> <td class="nil"</td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td>1</td> </tr> 
 
                 <tr> <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td class="today">7</td><td>8</td> </tr> 
 
@@ -53,6 +58,9 @@
                 <tr> <td>27</td><td>28</td><td>29</td><td>30</td><td class="nil"></td><td class="nil"></td><td class="nil"></td> </tr>  
         </table>
       </div> 
+      <form action = "/emotions" method = "GET"> 
+        <button>Back to you day</button>
+      </form>
     </div>
     <script
     src="https://code.jquery.com/jquery-3.1.1.js"
