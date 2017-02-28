@@ -61,7 +61,7 @@ var Calendar = function () {
 	    }
 
 	    function createCal(year, month) {   
-
+	    	//mule allows this to happend/ connect the frontend logic with the database
 	    	var emotionYear = mule.emotions.filter(obj => (new Date(obj.time)).getFullYear() === year)
 	    	var emotionMonth = emotionYear.filter(obj => (new Date(obj.time)).getMonth() === month)
 	    	//put emotionMonth.length at the end to see how many object we have in these arrays!
@@ -111,12 +111,22 @@ var Calendar = function () {
 			            
 			            if (isNaN(lastDay) === false){
 			            	//create 3 jquery variables so that it can be transform in image front end
-			       	      	calendar[i][j] = lastEmotion
-					    	console.log("jjjjjjj" + calendar[i])
-		            	} 
-		        
-			            	
-			
+			       	      	if (lastEmotion == "1"){
+			       	 //      		var img = document.createElement('img');
+    								// img.src = "<img /public/img/1.jpg";
+    								
+								calendar[i][j] = "<img src='/public/img/1.svg' class='happy'/>"
+						    	console.log("jjjjjjj" + calendar[i])
+			       	      	}
+			       	      	if (lastEmotion == "2"){
+			       	      		calendar[i][j] = "<img src='/public/img/2.svg' class='soso'/>"
+						    	console.log("jjjjjjj" + calendar[i])
+			       	      	} 
+			       	      	if (lastEmotion == "3")
+			       	      		calendar[i][j] = "<img src='/public/img/3.svg' class='unhappy'/>"
+						    	console.log("jjjjjjj" + calendar[i])
+			       	      	}
+		        		
 			        } else { 
 			            calendar[i][j] = " "; 
 			            haveDays = false; 

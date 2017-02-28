@@ -9,7 +9,7 @@ var emotionSchema = new Schema({
 
 	time:   {
                 type: Date,
-                default: (new Date()).getTime() 
+                default: Date.now 
             },
             
     userID: {
