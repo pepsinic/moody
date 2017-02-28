@@ -1,23 +1,52 @@
 <!-- for each user in the user data base show name -->
 <!-- for (var feeling of emotions){
 	 //   feeling.userID  and userID  -->
-Username : <%= username %> <br>
-Emotions : <br>
-<%for (var feeling of emotions){%> 
-	<% if (userID == feeling.userID){ %>
-			<ul><img src="/public/img/<%= feeling.number %>.jpg" alt="" border=3 height=50 width=50/>
-			<time><%= feeling.time  %></time></ul>
-		<% } %>	
-<% } %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>    
+     <link href="/public/css/stylesheet.css" rel="stylesheet" type="text/css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<form action = "/users" method = "GET"> 
-	<button>Mood changed?</button>
-</form>
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<form action = "/emotions/comment" method = "GET"> 
-	<button>Add a comment</button>
-</form>
+	<title> Index page </title>
+ 	</head>
+	<body class="background container">
+		<div>
+		<h1 id="h1"> Here are all your saved feelings, <%= username %>.</h1>
+		<form action = "/users" method = "GET"> 
+			<button type="submit" id="mood"> &#x21a9; </button>
+		</form>
+		<table class="table table-condensed table-bordered table-striped">
+			<tr>
+			<th>Feeling</th>
+			<th>Time</th>
+			</tr>
 
-<form action = "/emotions/month" method = "GET"> 
-	<button>See the calendar</button>
-</form>
+			<%for (var feeling of emotions){%> 
+				<% if (userID == feeling.userID){ %>
+						<tr>
+						<td><img src="/public/img/<%= feeling.number %>.svg" alt="" class="smileydisp"/></td>
+						<td><time><%= feeling.time  %></time></td>
+						</tr>
+					<% } %>	
+			<% } %>
+
+		</table>
+
+		<form action = "/emotions/comment" method = "GET"> 
+			<button type="submit" id="comment">Add a comment</button>
+		</form>
+
+		<form action = "/emotions/month" method = "GET"> 
+			<button type="submit" id="calendar">See the calendar</button>
+		</form>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    
+	</body>
+</html>

@@ -1,14 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>    
+     <link href="/public/css/stylesheet.css" rel="stylesheet" type="text/css">
+    <title> Choose an emotion </title>
+  </head>
+ <body class="page">
+  	<h1> Hey <%= username %>, how do you feel today? </h1> <!-- put the name of user and a button not an input because it was not working -->
 
-<h1> Hello new <%= username %> </h1> <!-- put the name of user and a button not an input because it was not working -->
+	<% for (var i = 1; i<=3; i++ ) {%>
+		<form action = "/emotions/create" method = "POST">
+			<button href="/emotions/<%= i %>" name = "emotionParam" value ="<%= i %>" id="<%= "smiley" + i%>">
+			<%= console.log(i)%>
+				<img src="/public/img/<%= i %>.svg" alt="" class="smiley"/>
+			</button>
+		</form>
+	<% } %>
 
-<% for (var i = 1; i<=3; i++ ) {%>
-	<form action = "/emotions/create" method = "POST">
-		<button href="/emotions/<%= i %>" name = "emotionParam" value ="<%= i %>">
-			<img src="/public/img/<%= i %>.jpg" alt="" border=3 height=100 width=100/>
-		</button>
+	<form action = "/users/logOut" method = "POST"> 
+		<button type="logOut">Log Out</button>
 	</form>
-<% } %>
 
-<form action = "/users/logOut" method = "POST"> 
-	<button>Log Out</button>
-</form>
+ </body>
+</html>
