@@ -82,21 +82,41 @@ var Calendar = function () {
 			//the calendar is created day by day :
 			i = 0; 
 			while (haveDays) {  
-				//add an object with mood to the day! 1/ Search in emotionDay and select the last emotion of the day
+	
 			    calendar[i] = []; 
+			    
+			    // if there are several emotions on a day we must select the last one.
 			   
 			    for (j = 0; j < 7; j++) { 
-			    	console.log(day)
-			    	var emotionDay = emotionMonth.filter(obj => (new Date(obj.time)).getDate() === day)
 			        if (i === 0) { 
-			            if (j === startDay) { 
-			            	//compare the day and add the emotion to calendar [i]
-			                calendar[i][j] = (day = day+1); // day++
-			                // var emotionDay = emotionMonth.filter(obj => (new Date(obj.time)).getDate() === day)
+			            if (j === startDay) { // startDay is the day of the week Wenesday = 3 as it starts from 0 =sunday
+			                
+			                calendar[i][j] = day++; // day++
 			                startDay++; 
 			            } 
 			        } else if (day <= daysInMonths[month]) { 
-			            calendar[i][j] = day++; 
+			            var emotionDay = emotionMonth.filter(obj => {
+			            	//debugger
+			            	console.log("£££££" + (new Date(obj.time)).getDate())
+			            	return (new Date(obj.time)).getDate() === day
+			        	})	
+
+			        	//if there are several emotions on a day we must select the last one => slice()	            
+			            var lastDay = (new Date((emotionDay.slice(-1)[0] || {}).time)).getDate()
+			            console.log("%%%%" + lastDay) //the right day
+			            var lastEmotion = (new Number((emotionDay.slice(-1)[0] || {}).number)) //get the emotion of that lastDay
+			            
+			            console.log("emo : " + lastEmotion)
+			            calendar[i][j] = day++;
+			            
+			            if (isNaN(lastDay) === false){
+			            	//create 3 jquery variables so that it can be transform in image front end
+			       	      	calendar[i][j] = lastEmotion
+					    	console.log("jjjjjjj" + calendar[i])
+		            	} 
+		        
+			            	
+			
 			        } else { 
 			            calendar[i][j] = " "; 
 			            haveDays = false; 
@@ -106,6 +126,7 @@ var Calendar = function () {
 			        } 
 			    } 
 			    i++; 
+
 			}
 			if (calendar[5]) {   // this is to make the calendar stay at maximum 5 weeks and not 6 but we don't need that!
 	    		for (i = 0; i < calendar[5].length; i++) { 
@@ -113,10 +134,8 @@ var Calendar = function () {
 			            calendar[4][i] = "<span>" + calendar[4][i] + "</span><span>" + calendar[5][i] + "</span>"; 
 			        } 
 	    		} 
-	    		var emotionDay = emotionMonth.filter(obj => (new Date(obj.time)).getDate() === day)
-	    		
+
 	    		calendar = calendar.slice(0, 5); 
-	    
 			}
 
 			for (i = 0; i < calendar.length; i++) { 
