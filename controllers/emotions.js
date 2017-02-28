@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 	
 	mongoose.model("emotionCollection").find({}, function(err, records) { 
 		// we need the times/emotions/userIDs and the usernames/userIDs and compare them with all the userID of emotions DB
-		console.log(records)
+		// console.log(records)
 		// for (var feeling of records){
 		// console.log("£££££  " + feeling.userID, userID)
 		res.render('emotions/index', {emotions: records, userID: res.locals.user._id, username : username.username})		
@@ -53,7 +53,7 @@ router.get("/month", (req, res) => {
 	console.log("WE ARE IN MONTH") 
 	console.log(userID, username)
     mongoose.model("emotionCollection").find({userID: res.locals.user._id}, function(err, records) {
-    	console.log(records)
+    	//console.log(records)
     	res.render("month", {emotions: records, userID: res.locals.user._id, username : username.username})
 	})
 }) 
