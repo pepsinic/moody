@@ -15,11 +15,10 @@ router.get('/', function(req, res) {
 	console.log("WE ARE IN INDEX") 
 	console.log(userID, username)
 	
-	mongoose.model("emotionCollection").find({}, function(err, records) { 
+	mongoose.model("emotionCollection").find({}).sort({time: -1}).exec(function(err, records) { //SORT => invert the emotions to have the last one on top!
 		// we need the times/emotions/userIDs and the usernames/userIDs and compare them with all the userID of emotions DB
 		// console.log(records)
-		// for (var feeling of records){
-		// console.log("£££££  " + feeling.userID, userID)
+
 		res.render('emotions/index', {emotions: records, userID: res.locals.user._id, username : username.username})		
 		// }
 	})
@@ -53,7 +52,7 @@ router.get("/month", (req, res) => {
 	console.log("WE ARE IN MONTH") 
 	console.log(userID, username)
     mongoose.model("emotionCollection").find({userID: res.locals.user._id}, function(err, records) {
-    	//console.log(records)
+    	console.log("all the records on month : " + records)
     	res.render("month", {emotions: records, userID: res.locals.user._id, username : username.username})
 	})
 }) 

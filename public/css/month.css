@@ -11,7 +11,7 @@ body {
 #cal .header { 
     cursor:default; 
     background:  #1abc9c; 
-    height: 34px; 
+    height: 60px; 
     position: relative; 
     color:white; 
     border-top-left-radius: 5px; 
@@ -21,14 +21,14 @@ body {
 
 #cal .header .month-year { 
     width: 100%;
-    font-size:100%;  
-    line-height:34px;  
+    font-size:150%;  
+    line-height:50px;  
     text-align: center; 
 }
 
 #cal .header span { 
     display:inline-block; 
-    line-height:34px; 
+    line-height:60px; 
 }
 
 #cal .header .button { 
