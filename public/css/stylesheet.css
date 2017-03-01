@@ -1,4 +1,4 @@
- body , .background{
+  body , .background{
  	font-family:Verdana, sans-serif;
 	background-color: #13232f;
 	text-align: center;
@@ -102,12 +102,13 @@ button[type=logOut]{
     border-radius: 0px;
 }
 
-tr{
-	text-align: center;
+
+
+#align {
+    text-align: center;
 }
 
 button[type=submit]{
-	width: 30%;
     height: 60px;
     font-size:20px;
     background-color: #1abc9c;
@@ -117,19 +118,26 @@ button[type=submit]{
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    display:inline;
 }
 
 #mood{
-	right: 90%
-	width:10%;
+	right: 85%;
+	width:4.6%;
 	font-weight: 100px;
+	position:absolute;
+
 }
 #calendar{
+	width: 25%;
 	top:90%;
-	left:35%;
+	left:40%;
 	position:fixed;
-
+}
+#comment{
+	width: 74%;
+	display:inline;
+	position:absolute;
+	left:16%;
 }
 tr:nth-child(even) {
     background-color: #dddddd;
