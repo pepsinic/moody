@@ -2,10 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link href="/public/css/month.css" rel="stylesheet" type="text/css">
+     <link href="/public/css/stylesheet.css" rel="stylesheet" type="text/css">
+          <link rel="icon" href="../public/img/logo.jpg">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
     <title>Calendar </title>
   </head>
-  <body>
+  <body class="container background">
       <script type="text/javascript">
         var mule = {emotions: <%- JSON.stringify(emotions) -%>}  
         //mule is a variable so that it can be passed to the file calendar.js
@@ -14,14 +22,14 @@
       </script>
       <div id="cal"> 
         <div class="header"> 
-          <span class="left button" id="prev"> &#10094; </span> 
-          <span class="month-year" id="label"> June 20&0 </span>
-          <span class="right button" id="next"> &#10095; </span>
+          <span class="widthbutton left button" id="prev"> &#10094; </span> 
+          <span class="month-year" id="label"> </span>
+          <span class="widthbutton right button" id="next"> &#10095; </span>
         </div>
           
         <div id="days"> 
-          <table>
-            <tr>
+          <table class="table-bordered">
+            <tr class="days">
               <td>Sun</td> 
               <td>Mon</td> 
               <td>Tue</td> 
@@ -33,9 +41,11 @@
           </table>
         </div>
 
-        <div id="cal-frame"> 
+        <div id="cal-frame" class="table-bordered"> 
           <table class="temp">   
-                <tr> <td class="nil"</td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td>1</td> </tr> 
+            <div class="days">
+
+                <tr> <td class="nil"></td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td class="nil"></td><td>1</td> </tr> 
 
                 <tr> <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td class="today">7</td><td>8</td> </tr> 
 
@@ -44,22 +54,25 @@
                 <tr> <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td> </tr> 
 
                 <tr> <td><span>23</span><span>30</span></td><td><span>24</span><span>31</span></td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td> </tr> 
+            </td>
           </table>
 
           <table class="curr"> 
+            <div>
                 <tr> <td class="nil"></td><td class="nil"></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td> </tr> 
 
-                <tr> <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td class="today">11</td><td>12</td> </tr> 
+                <tr > <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td class="today">11</td><td>12</td> </tr> 
 
                 <tr> <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td> </tr> 
 
                 <tr> <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td> </tr> 
                 
                 <tr> <td>27</td><td>28</td><td>29</td><td>30</td><td class="nil"></td><td class="nil"></td><td class="nil"></td> </tr>  
+            </div>
         </table>
       </div> 
       <form action = "/emotions" method = "GET"> 
-        <button>Back to you day</button>
+        <button type="submit">Back to index</button>
       </form>
     </div>
     <script
@@ -71,5 +84,8 @@
       var cal = Calendar(); 
       cal.init();
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
   </body>
 </html>

@@ -15,7 +15,7 @@
  	</head>
 	<body class="background container">
 		<div>
-		<h1 id="h1"> Here are all your saved feelings, <span style="text-transform: uppercase;"> <%= username %> </span>.</h1>
+		<h1 id="h1"> Here are all your saved feelings, <span style="text-transform: capitalize;"> <%= username %> </span>.</h1>
 		<form action = "/users" method = "GET"> 
 			<button type="submit" id="mood"> &#10094;  </button>
 		</form>
@@ -37,22 +37,26 @@
 			<%for (var feeling of emotions){%> 
 				<% if (userID == feeling.userID){ %>
 					<% if(feeling.number==1){%>
+					<% var arr=feeling.time%>
+					<%console.log("                                                                                                                                THIS IS ARR                        " + arr)%>
+
 							<tr class="success">
 							<td><img src="/public/img/<%= feeling.number %>.svg" alt="" class="smileydisp"/></td>
-							<td><time><%= feeling.time  %></time></td>
+							<td><time><%= feeling.time.toLocaleDateString("en-us") + " " + feeling.time.toLocaleTimeString("en-us") %></time></td>
 							</tr>
 					<% } %>	
+
 
 					<% if(feeling.number==2){%>
 							<tr class="warning">
 							<td><img src="/public/img/<%= feeling.number %>.svg" alt="" class="smileydisp"/></td>
-							<td><time><%= feeling.time  %></time></td>
+							<td><time><%= feeling.time.toLocaleDateString("en-us") + " " + feeling.time.toLocaleTimeString("en-us")  %></time></td>
 							</tr>
 					<% } %>	
 					<% if(feeling.number==3){%>
 							<tr class="danger">
 							<td><img src="/public/img/<%= feeling.number %>.svg" alt="" class="smileydisp"/></td>
-							<td><time><%= feeling.time  %></time></td>
+							<td><time><%= feeling.time.toLocaleDateString("en-us") + " " + feeling.time.toLocaleTimeString("en-us") %></time></td>
 							</tr>
 					<% } %>	
 
