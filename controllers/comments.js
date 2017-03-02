@@ -12,12 +12,10 @@ const emotionM = mongoose.model("emotionCollection")
 router.post("/", (req, res) => {  //works on getting username, time of emotion, emotion
     userID = res.locals.user._id
 	username = res.locals.user.username
- 	console.log("I am in COMMENTS of the user : " + username) 
-	//console.log(userID, username)
- //    mongoose.model("emotionCollection").find({}, function(err, records) { 
- //    res.render("month", {emotions: records, userID: res.locals.user._id, username : username.username})
-	// })
-	res.render("comment", {username: username})
+ 	console.log("I am in COMMENTS of the user : " + username, userID) 
+	
+	emotionM
+		res.render("comment", {username: username})
 })
 
 router.post("/create", (req, res) => { //
