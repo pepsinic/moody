@@ -114,11 +114,12 @@ button[type=logOut]:hover{
     text-align: center;
 }
 
+
+
 button[type=submit]{
-    height: 60px;
-    font-size:20px;
-    background-color: #1abc9c;
-    color: white;
+    height: 75px;
+    font-size:30px;
+    background-color: #ddd;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -126,32 +127,34 @@ button[type=submit]{
     cursor: pointer;
 }
 
+
 button[type=submit]:hover{
-	background-color: #1ea086;
-
+	background-color: white;
 }
+
 #mood{
-	right: 85%;
-	width:4.6%;
-	font-weight: 100px;
-	position:absolute;
-
+	width: 20%;
+    top:90%;
+    left:19%;
+    position:fixed;
+    color: white;
+    background-color: #1abc9c;
 }
+
 #calendar{
-	width: 25%;
-	top:90%;
-	left:40%;
-	position:fixed;
-}
-#comment{
-	width: 74%;
-	display:inline;
-	position:absolute;
-	left:16%;
+    width: 40%;
+    top:90%;
+    left:40%;
+    position:fixed;
+    color: white;
+    background-color: #1abc9c;
 }
 
-
-
+#time {
+    width: 74%;
+    left:16%;
+    color: #888;
+}
 
 /* CALENDRIER MONTH*/
 

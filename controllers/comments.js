@@ -9,7 +9,7 @@ const emotionM = mongoose.model("emotionCollection")
 
 
 
-router.get("/", (req, res) => { 
+router.post("/", (req, res) => {  //works on getting username, time of emotion, emotion
     userID = res.locals.user._id
 	username = res.locals.user.username
  	console.log("I am in COMMENTS of the user : " + username) 
@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 	res.render("comment", {username: username})
 })
 
-router.post("/create", (req, res) => {
+router.post("/create", (req, res) => { //
 	//userID = res.locals.user._id
 	var newCommentRecord = req.body.createComment
 	console.log("newCommentRecord  :  " + newCommentRecord)

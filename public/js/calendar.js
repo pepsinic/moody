@@ -62,13 +62,11 @@ var Calendar = function () {
 
 	    function createCal(year, month) {   
 	    	//mule allows this to happend/ connect the frontend logic with the database
-	    	console.log("this is mule : " + mule)
-	    	console.log(month)
+	    	
 	    	var emotionYear = mule.emotions.filter(obj => (new Date(obj.time)).getFullYear() === year)
 	    	var emotionMonth = emotionYear.filter(obj => (new Date(obj.time)).getMonth() === month)
 	    	//put emotionMonth.length at the end to see how many object we have in these arrays!
-	    	console.log(emotionMonth.length)
-	    	console.log(emotionMonth)
+	  
 
 	    	var day = 1, i, j, haveDays = true,  
 	        startDay = new Date(year, month, day).getDay(),
@@ -93,44 +91,31 @@ var Calendar = function () {
 			    for (j = 0; j < 7; j++) { 
 			        if (i === 0) { 
 			            if (j === startDay) { // startDay is the day of the week Wenesday = 3 as it starts from 0 =sunday
-			                console.log(day)
 			                var emotionDay = emotionMonth.filter(obj => {
-			            	//debugger
-			            	console.log("£££££" + (new Date(obj.time)).getDate())
 			            	return (new Date(obj.time)).getDate() === day
 			        	})	
 
-			        	//if there are several emotions on a day we must select the last one => slice()	            
 			            var lastDay = (new Date((emotionDay.slice(-1)[0] || {}).time)).getDate()
-			            console.log("%%%%" + lastDay) //the right day
-			            var lastEmotion = (new Number((emotionDay.slice(-1)[0] || {}).number)) //get the emotion of that lastDay
+			            var lastEmotion = (new Number((emotionDay.slice(-1)[0] || {}).number)) 
 			            
-			            console.log("emo : " + lastEmotion)
 			            calendar[i][j] = day++;
 			            startDay++; 
+
 			            if (isNaN(lastDay) === false){
-			            	//create 3 jquery variables so that it can be transform in image front end
 			       	      	if (lastEmotion == "1"){
-			       	 //      		var img = document.createElement('img');
-    								// img.src = "<img /public/img/1.jpg";
-    								
 								calendar[i][j] = "<img src='/public/img/1.svg' class='happy'/>"
-						    	console.log("jjjjjjj" + calendar[i])
 			       	      	}
 			       	      	if (lastEmotion == "2"){
 			       	      		calendar[i][j] = "<img src='/public/img/2.svg' class='soso'/>"
-						    	console.log("jjjjjjj" + calendar[i])
 			       	      	} 
 			       	      	if (lastEmotion == "3")
 			       	      		calendar[i][j] = "<img src='/public/img/3.svg' class='unhappy'/>"
-						    	console.log("jjjjjjj" + calendar[i])
 			       	      	}
 			            } 
 			        } else if (day <= daysInMonths[month]) { 
-			        	console.log(day)
+			        	// console.log(day)
 			            var emotionDay = emotionMonth.filter(obj => {
-			            	//debugger
-			            	console.log("£££££" + (new Date(obj.time)).getDate())
+			            	// console.log("£££££" + (new Date(obj.time)).getDate())
 			            	return (new Date(obj.time)).getDate() === day
 			        	})	
 
@@ -145,16 +130,17 @@ var Calendar = function () {
 			            if (isNaN(lastDay) === false){
 			            	//create 3 jquery variables so that it can be transform in image front end
 			       	      	if (lastEmotion == "1"){
-			       	 //      		var img = document.createElement('img');
-    								// img.src = "<img /public/img/1.jpg";
-    								
+			       	 			// var img = document.createElement('img');
+    							// img.src = "<img /public/img/1.jpg";
 								calendar[i][j] = "<img src='/public/img/1.svg' class='happy'/>"
 						    	console.log("jjjjjjj" + calendar[i])
 			       	      	}
+
 			       	      	if (lastEmotion == "2"){
 			       	      		calendar[i][j] = "<img src='/public/img/2.svg' class='soso'/>"
 						    	console.log("jjjjjjj" + calendar[i])
-			       	      	} 
+			       	      	}
+
 			       	      	if (lastEmotion == "3")
 			       	      		calendar[i][j] = "<img src='/public/img/3.svg' class='unhappy'/>"
 						    	console.log("jjjjjjj" + calendar[i])

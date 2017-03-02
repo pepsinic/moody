@@ -15,7 +15,7 @@ require("../models/emotion.js")
 // }
 // for(let i = 0; i<40; i++){
 // 	mongoose.model("emotionCollection").create({
-// 		userID: "58b69ae613f1f52347bd7702",
+// 		userID: "58b6a718ca06a5259db2be9b",
 // 		number: (Math.floor(Math.random()*3) + 1),
 // 		time: yourRandomGenerator(80, 1, 24)
 // 	})
