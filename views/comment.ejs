@@ -12,14 +12,20 @@
 	<body class="background container">
 	<br><br><br><br><br>
 		<h1><span style="text-transform: capitalize;"> dear <%= username %> </span>you can add or update your comment</h1>
+		
+		<!-- put image of emotion here -->
+		<img src="/public/img/<%= emotionNum %>.svg" alt="" class="smiley"/>
+		<!-- put the time of the emotion here -->
+		<time><%=time%></time>
 		<div>
 			<form action = "/emotions" method = "GET">  
 				<button type="submit" id="mood"> &#10094;  </button>
 			</form>
 		</div>
 		<div></div>
-			<form class="comment" action = "/comments/create" method = "POST">
-				<textarea placeholder = "Add your comment here..." name = "createComment" rows="4" cols="50"></textarea>
+			<form class="comment" action = "/comments/create" name= "comment" method = "POST">
+				<textarea placeholder = "Add your comment here..." rows="8" cols="50">
+				</textarea>
 				<br>
 			    <button type="submit" id="comment">Add comment</button>
 			</form>

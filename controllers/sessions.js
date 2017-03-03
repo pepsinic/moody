@@ -88,7 +88,7 @@ router.use("*", (req, res, next) => { // USE and not GET method because then it 
                 }
 
                 console.log("%%%%%%%   " + userRecords)
-                res.locals.user = userRecords //we pass on a variable to the next handler
+                res.locals.user = userRecords //(userRecords of userM)we pass on a variable to the next handler
                 //res.render("page") // id, user NO NEED because next() jumps directly to the next handler
                 next()
             })

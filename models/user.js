@@ -17,7 +17,7 @@ var userSchema = new Schema({
                 required: 'Password missing or too short (at least 6 characters)',
                 minlength: 6
                 }
-}) // UserID automatiquement donné ! 
+}) // _id given automatically! 
 
 userSchema.plugin(findOrCreate);
 

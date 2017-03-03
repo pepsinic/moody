@@ -37,7 +37,6 @@
 
 			<%for (var feeling of emotions){%> 
 				<% if (userID == feeling.userID){ %>
-					<% var arr=feeling.time%>
 					<% var moodyClass = ["success", "warning", "danger"][feeling.number - 1] %>
 	 					
 							<tr class="<%= moodyClass %>">
@@ -46,8 +45,9 @@
 									<img src="/public/img/<%= feeling.number %>.svg" alt="" class="smileydisp"/>
 								</td>
 								<td>
-								<form action = "/comments" method = "POST"> 
-									<button type="submit" id="time"><time><%= feeling.time.toLocaleDateString("en-us") + " " + feeling.time.toLocaleTimeString("en-us") %></time></button>
+								<form action = "/comments/<%=feeling._id%>" name="feelingID" method = "POST"> 
+									<button type="submit" name="feelingTime"><%feeling._id%>
+									<time><%= feeling.time.toLocaleDateString("en-us") + " " + feeling.time.toLocaleTimeString("en-us") %></time></button>
 								</form>
 								</td>
 							</tr>
