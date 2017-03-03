@@ -22,12 +22,12 @@
 				<button type="submit" id="mood"> &#10094;  </button>
 			</form>
 		</div>
-		<div></div>
-			<form class="comment" action = "/comments/create" name= "comment" method = "POST">
-				<textarea placeholder = "Add your comment here..." rows="8" cols="50">
-				</textarea>
+		<div>
+			<form class="comment" action = "/comments/<%=emotionID%>/create" method = "POST">
+				<textarea autofocus name= "comment" placeholder= "Add your comment here..."><%if(comment){%><%=comment%><% }%></textarea>
+
 				<br>
-			    <button type="submit" id="comment">Add comment</button>
+			    <button type="submit" id="comment">Add comment</button> 
 			</form>
 		</div>
 		<div>

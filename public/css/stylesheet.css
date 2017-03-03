@@ -49,10 +49,6 @@ input[type=submit]:hover {
     background-color: #1fad91;
 }
 
-div {
-    border-radius: 5px;
-    padding: 40px;
-}
 .login{
 	text-align: center;
 	display:block;
@@ -216,9 +212,9 @@ textarea {
 }
 
 #cal .header { 
-    cursor:default; 
     background:  #1abc9c; 
-    height: 60px; 
+    height: 60px;
+
     position: relative; 
     color:white; 
     border-top-left-radius: 5px; 
@@ -242,8 +238,9 @@ textarea {
 #cal .header .button { 
     width:24px; 
     text-align:center; 
-    position:absolute; 
-} 
+    position:relative;
+}
+
 #cal .header .left.button { 
     left:0; 
     border-top-left-radius: 5px; 
@@ -251,9 +248,8 @@ textarea {
 } 
 #cal .header .right.button { 
     right:0; 
-    top:0; 
-    border-left:1px solid #1abc9c; 
     border-top-right-radius: 5px; 
+    border-left:1px solid #1abc9c;
 } 
 #cal .header .button:hover { 
     background:#107f69; 
@@ -272,7 +268,7 @@ textarea {
     line-height:50px; 
     text-align:center; 
     /*border:1px solid #e6e6e6; */
-    cursor:default; 
+/*    cursor:default; */
 } 
 
 #cal #days td {  
@@ -330,7 +326,8 @@ textarea {
 }
 
 #cal #cal-frame table.temp {
-	position:absolute;
+	
+    position:absolute;
 }
 
 #cal #cal-frame table.curr {
